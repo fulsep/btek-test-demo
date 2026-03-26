@@ -1,0 +1,17 @@
+name: Unit Testing
+run-name: Running unit testing on actions
+on: [push]
+jobs:
+  unit-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      - name: Setup NodeJS
+        uses: actions/setup-node@v6
+        with:
+            node-version: '24'
+      - name: Installing dependencies
+        run: npm ci            
+      - name: Running unit test with jest
+        run: npm run test
